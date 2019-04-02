@@ -21,9 +21,9 @@ say: Welcome
 # May be cause CROS bug!
 background_image:
     mode: normal #normal or random
-    normal_url: /img/1.jpg
+    normal_url: /img/Random-img/78.jpg
     random_max: 110 
-    random_url: https://sariay.github.io/Random-img/
+    random_url: /img/Random-img/
     
 # show motto
 motto:
@@ -100,7 +100,7 @@ mathjax:
   
 # post_code
 code_copy:
-    enable: false
+    enable: true
 
 # post_excerpt for index page
 excerpt_cart: 80

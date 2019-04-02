@@ -10,7 +10,7 @@ title: hexo+github搭建个人博客
 
 ### 安装所需环境
 
-``` bash
+``` LYD
 安装Git
 安装Node.js
 安装Hexo
@@ -26,7 +26,7 @@ GitHub创建个人仓库
 windows：到git官网上下载,Download git,下载后会有一个Git Bash的命令行工具，用这个工具来使用git。
 
 linux：只需要一行代码就搞定了：
-  ``` bash
+  ``` LYD
   sudo apt-get install git
   ```
 
@@ -35,7 +35,7 @@ linux：只需要一行代码就搞定了：
 windows：nodejs选择LTS版本就行了。
 
 linux：
-  ``` bash
+  ``` LYD
   sudo apt-get install nodejs
   sudo apt-get install npm
   ```
@@ -43,7 +43,7 @@ linux：
 ### 3、安装hexo
 
 打开git bash，输入命令：
-``` bash
+``` LYD
 npm install -g hexo-cli
 # 初始化
 hexo init myBlog
@@ -60,7 +60,7 @@ npm install
 - themes：主题
 - _config.yml: 博客的配置文件
 
-``` bash
+``` LYD
 hexo g
 hexo server # 或者 hexo s
 ```
@@ -85,13 +85,13 @@ hexo server # 或者 hexo s
 
 在git bash中输入：
 
-``` bash
+``` LYD
 git config --global user.name "yourname"
 git config --global user.email "youremail"
 ```
 然后创建SSH,一路回车
 
-``` bash
+``` LYD
 ssh-keygen -t rsa -C "youremail"
 ```
 这个时候就会生成.ssh文件夹。
@@ -104,7 +104,7 @@ id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是�
 <img src="/img/ssh.png" class="full-image" />
 
 检测是否成功：
-``` bash
+``` LYD
 ssh -T git@github.com
 ```
 
@@ -112,7 +112,7 @@ ssh -T git@github.com
 
 打开已经装好的hexo。打开站点配置文件 _config.yml找到deploy修改：
 
-``` bash
+``` LYD
 deploy:
   type: git
   repo: https://github.com/leiyunduo/leiyunduo.github.io.git  #此地址为github仓储地址
@@ -121,13 +121,13 @@ deploy:
 
 这个时候需要先安装deploy-git ,这样你才能用命令部署到GitHub。
 
-``` bash
+``` LYD
 npm install hexo-deployer-git --save
 ```
 
 安装完成后输入命令：
 
-``` bash
+``` LYD
 hexo clean # 清除之前生成的东西
 hexo generate #或 hexo g  生成静态文章
 hexo deploy #或 hexo d  部署文章
@@ -151,7 +151,7 @@ hexo deploy #或 hexo d  部署文章
 
 最后输入命令
 
-``` bash
+``` LYD
 hexo clean
 hexo g
 hexo d
@@ -162,16 +162,65 @@ hexo d
 如果你想给hexo更换主题，那么继续。
 hexo官网有很多主题列表，选择一个自己喜欢的。我选择的是Annie
 
-``` bash
+``` LYD
 git clone https://github.com/Sariay/hexo-theme-Annie.git
 ```
 
 将克隆下的代码放在theme中。theme目录是用来放主题的。
 剩余的配置每个主题都有说明，可以自己浏览一下。
 
-写完之后记得
 
-``` bash
+### 8、git分支进行多终端工作
+
+现在的问题是由于`hexo d`上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。如果我们换一个电脑就没有源文件，无法进行更改。所以现在要上传源文件使文件同步。
+
+首先在github存储库中新建分支hexo。
+
+<img src="/img/branch.png" />
+
+在Settings下Branches中修改默认分支为hexo分支（这样每次同步源文件的时候就不用指定分支了）。
+
+<img src="/img/moren.png" />
+
+然后在本地新建一个文件夹，打开git bash，克隆hexo分支下的代码。
+
+``` LYD
+git clone https://github.com/leiyunduo/leiyunduo.github.io.git
+```
+
+接下来在克隆到本地的文件夹`leiyunduo.github.io`中，把除了.git 文件夹外的所有文件都删掉（注意是除了.git）。
+把之前我们写的博客源文件全部复制过来，除了`.deploy_git`。
+
+然后
+
+``` LYD
+git add .
+git commit –m "xxxx"
+git push 
+```
+
+OK了。
+
+在github上查看。其中node_modules、public、db.json已经被忽略掉了，没有关系，不需要上传，因为在别的电脑上需要重新输入命令安装 。
+
+
+### 9、更换电脑
+
+换了电脑步骤还是跟上面一样。但是不需要初始化`hexo init`。直接`git clone https://github.com/leiyunduo/leiyunduo.github.io.git`
+
+然后
+
+``` LYD
+cd xxx.github.io
+npm install
+npm install hexo-deployer-git --save
+hexo g # 生成
+hexo d # 部署
+```
+
+每次结束之前记得提交源文件
+
+``` LYD
 git add .
 git commit –m "xxxx"
 git push 
