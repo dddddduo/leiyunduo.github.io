@@ -91,5 +91,6 @@ search:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/leiyunduo/leiyunduo.github.io.git
-  branch: master
+  repo: 
+    coding: https://git.dev.tencent.com/leiyunduo/myBlog.git,master
+    github: https://github.com/leiyunduo/leiyunduo.github.io.git,master

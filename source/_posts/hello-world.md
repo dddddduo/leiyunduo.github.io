@@ -225,3 +225,11 @@ git add .
 git commit –m "xxxx"
 git push 
 ```
+
+### 10、coding page上部署实现国内外分流
+
+之前我们已经把hexo托管在github了，但是github是国外的，而且百度的爬虫是不能够爬取github的，所以如果你希望你做的博客能够在百度引擎上被收录，而且想要更快的访问，那么可以在国内的coding page做一个托管，这样在国内访问就是coding page，国外就走github page。
+
+#### 1.申请coding账户，新建项目
+
+<img src="/img/coding.png" />

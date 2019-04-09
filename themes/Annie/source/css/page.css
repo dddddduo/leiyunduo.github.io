@@ -124,7 +124,7 @@
 
 .about p {
 	font-family: Arial, 'Courier New', "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 1.5em;
+	font-size: 1em;
 	line-height: 2em;
 	margin: 0.5em;
 	color: #232323;
@@ -135,14 +135,4 @@
 		断落首行缩进两字?
 		text-indent: 2em;
 	*/
-}
-.about p a {
-	display: inline-block;
-	margin-left: 10px;
-	color: #3AA0FF;
-	text-decoration: underline;
-}
-.about p:nth-child(2) a {
-	display: inline-block;
-	margin-left: 36px;
 }
