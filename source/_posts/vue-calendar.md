@@ -1,3 +1,6 @@
+---
+title: vue-calendar-component日历插件
+---
 ## vue-calendar-component
 
 * 基于 vue 2.0 开发的轻量，高性能日历组件
